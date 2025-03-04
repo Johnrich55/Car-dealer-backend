@@ -1,18 +1,16 @@
-import { createServer } from 'http';
-import app from './app.js';
-import connectDB from './config/db.js';
-
+import { createServer } from "http";
+import app from "./app.js";
+import connectDB from "./config/db.js";
+import dotenv from "dotenv";
 // import { port } from './config/config.js';
-require('dotenv').config();
+import { Server } from "socket.io";
+import socketServer from "./sockets/socket.js";
 
 const server = createServer(app);
+socketServer(server);
 
-
-
-
-// Start server after DB connection
 connectDB().then(() => {
   server.listen(3000, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Server running on port 2000`);
   });
 });
