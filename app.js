@@ -13,5 +13,7 @@ app.use(
 );
 app.use(json());
 app.use("/api", routes);
-
+app.get("/", (req, res) => {
+  res.json({ message: "hello" });
+});
 export default app;

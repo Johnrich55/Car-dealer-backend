@@ -6,7 +6,7 @@ import { v4 as uuid4 } from "uuid";
 export default function socketServer(server) {
   const io = new Server(server, {
     cors: {
-      origin: "*",
+      origin: "http://localhost:5173",
     },
   });
 
