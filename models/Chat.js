@@ -1,15 +1,15 @@
 import mongoose, { Schema } from "mongoose";
 
 const MemberSchema = new Schema({
-  user_id: { type: String, required: true }, // Consider Schema.Types.ObjectId if linking to User
-  user_name: { type: String, required: true }, // Removed default: "" since required
+  user_id: { type: String, required: true },
+  user_name: { type: String, required: true },
   img_url: { type: String, default: "" },
 });
 
 const MessageSchema = new Schema({
   user_id: { type: String, required: true },
   content: { type: String, required: true },
-  sent_at: { type: Date, required: true, default: Date.now }, // Changed to Date
+  sent_at: { type: Date, required: true, default: Date.now },
   is_read: { type: Boolean, required: true, default: false },
 });
 
@@ -21,6 +21,6 @@ const ChatSchema = new Schema({
   messages: { type: [MessageSchema], default: [] },
 });
 
-ChatSchema.index({ "members.user_id": 1 }); // Index for querying by user_id
+ChatSchema.index({ "members.user_id": 1 });
 
 export default mongoose.model("Chat", ChatSchema);
